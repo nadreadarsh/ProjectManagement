@@ -1,0 +1,189 @@
+Suraj TQ, [06-04-2024 10:12]
+<div class="fluid">
+    <div class="container-fluid position-relative">
+      
+      <div class="row">
+        <div class="col bg-image">
+          <div
+            class="header-text text-center position-absolute top-50 start-0 translate-middle-y ms-4 fs-4 fs-md-3 fs-lg-2"
+          >
+            &lt; Dashboard
+          </div>
+          <div
+            class="logo text-center position-absolute top-0 start-50 translate-middle"
+          >
+            <img
+              src="/../assets/Logo.svg"
+              alt="Logo"
+              style="width: 50px; height: auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-1 sticky-top">
+        <div
+          class="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top"
+        >
+          <ul
+            class="nav nav-pills navbar nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center"
+          >
+            <li>
+              <a
+                [routerLink]="['/dashboard']"
+                class="nav-link py-3 px-2"
+                title=""
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                data-bs-original-title="Dashboard"
+                onclick="toggleIcon('dashboardIcon', 'Dashboard')"
+              >
+                <img
+                  id="dashboardIcon"
+                  src="/../assets/Dashboard.svg"
+                  alt="Dashboard"
+                  class="icon fs-1"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                [routerLink]="['/projectList']"
+                class="nav-link py-3 px-2"
+                title=""
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                data-bs-original-title="Orders"
+                onclick="toggleIcon('ordersIcon', 'Orders')"
+              >
+                <img
+                  id="ordersIcon"
+                  src="/../assets/Project-list.svg"
+                  alt="ProjectList"
+                  class="icon fs-1"
+                />
+              </a>
+            </li>
+            <li *ngIf="isManager()">
+              <a
+                [routerLink]="['/createproject']"
+                class="nav-link py-3 px-2"
+                title=""
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                data-bs-original-title="Products"
+                onclick="toggleIcon('productsIcon', 'Products')"
+              >
+                <img
+                  id="productsIcon"
+                  src="/../assets/create-project.svg"
+                  alt="CreateProject"
+                  class="icon fs-1"
+                />
+              </a>
+            </li>
+
+<li class="align-self-end">
+              <a
+                [routerLink]="['/login']"
+                class="nav-link py-3 px-2"
+                title=""
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                data-bs-original-title="Logout"
+                onclick="toggleIcon('LogoutIcon', 'Logout')"
+              >
+                <img
+                  id="LogoutIcon"
+                  src="/../assets/Logout.svg"
+                  alt="Logout"
+                  (click)="logout()"
+                  class="icon fs-1"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+       
+      </div>
+      <div class="col-sm min-vh-100" style="background-color: #f3f5f7">
+       
+        <div class="row row-cols-1 row-cols-md-5 g-3">
+          <div class="col">
+            <div class="card h-60 shadow-blue border-blue-left">
+              <div class="card-body d-flex flex-column justify-content-end">
+                <p class="card-text small mb-0">Total Projects</p>
+                <p class="card-text display-4 mt-auto mb-0">
+                  {{ totalProjects }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-60 shadow-blue border-blue-left">
+              <div class="card-body d-flex flex-column justify-content-end">
+                <p class="card-text small mb-0">Closed</p>
+                <p class="card-text display-4 mt-auto mb-0">
+                  {{ closedProjectsCount }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-60 shadow-blue border-blue-left">
+              <div class="card-body d-flex flex-column justify-content-end">
+                <p class="card-text small mb-0">Running</p>
+                <p class="card-text display-4 mt-auto mb-0">
+                  {{ runningProjectsCount }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-60 shadow-blue border-blue-left">
+              <div class="card-body d-flex flex-column justify-content-end">
+                <p class="card-text small mb-0">Closure Delay</p>
+                <p class="card-text display-4 mt-auto mb-0">
+                  {{ closureDelayProjectsCount }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-60 shadow-blue border-blue-left">
+              <div class="card-body d-flex flex-column justify-content-end">
+                <p class="card-text small mb-0">Cancelled</p>
+                <p class="card-text display-4 mt-auto mb-0">
+                  {{ cancelledProjectsCount }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+            
+            <div class="chart-container">
+              <ngx-charts-chart
+                [width]="700"
+                [height]="550"
+                [title]="'Department Wise - Total Vs Closed'"
+                [description]="''"
+                [showLegend]="true"
+                [enableAnimations]="true"
+                [padding]="padding"
+                [titlePadding]="titlePadding"
+                [source]="sampleData"
+                [xAxis]="xAxis"
+                [seriesGroups]="seriesGroups"
+                [colorScheme]="'scheme01'">  
+              </ngx-charts-chart>
+            </div>
+            
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <script src="path_to_jqxChart_script_file.js"></script>

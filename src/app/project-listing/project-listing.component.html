@@ -1,0 +1,228 @@
+<div class="fluid">
+    <div class="container-fluid position-relative">
+        <!-- Row for the image -->
+        <div class="row">
+            <div class="col bg-image">
+                <div
+                    class="header-text text-center position-absolute top-50 start-0 translate-middle-y ms-4 fs-4 fs-md-3 fs-lg-2">
+                    &lt; Project Listing
+                </div>
+                <div
+                    class="logo text-center position-absolute top-0 start-50 translate-middle">
+                    <img
+                        src="/../assets/Logo.svg"
+                        alt="Logo"
+                        style="width: 50px; height: auto" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row for the navigation bar -->
+    <div class="row">
+        <div class="col-sm-1 sticky-top">
+            <div
+                class="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top">
+                <ul
+                    class="nav nav-pills navbar nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+                    <li>
+                        <a
+                            href="#"
+                            class="nav-link py-3 px-2"
+                            title
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="right"
+                            data-bs-original-title="Dashboard"
+                            onclick="toggleIcon('dashboardIcon', 'Dashboard')">
+                            <img
+                                id="dashboardIcon"
+                                src="/../assets/Dashboard.svg"
+                                alt="Dashboard"
+                                class="icon fs-1" />
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            routerLink="/project-listing"
+                            class="nav-link py-3 px-2"
+                            title
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="right"
+                            data-bs-original-title="Orders">
+                            <img
+                                id="ordersIcon"
+                                src="/../assets/Project-list.svg"
+                                alt="Orders"
+                                class="icon fs-1" />
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            routerLink="/createproject"
+                            class="nav-link py-3 px-2"
+                            title
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="right"
+                            data-bs-original-title="Products">
+                            <img
+                                id="productsIcon"
+                                src="/../assets/create-project.svg"
+                                alt="Products"
+                                class="icon fs-1" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm p-3 min-vh-100" style="background-color: #f3f5f7">
+            <!-- form content -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 d-none d-sm-block">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex justify-content-between align-items-center mb-3">
+                                    <div
+                                        class="search-container d-flex align-items-center">
+                                        <i
+                                            class="bi bi-search search-icon text-muted me-2"></i>
+                                        <input type="text" class="search-input"
+                                            placeholder="Search" />
+                                    </div>
+                                    <div class="SortbyDropdown">
+                                        <label for="sortColumn text-muted">Sort
+                                            By : </label>
+                                        <select id="sortColumn"
+                                            class="custom-dropdown  no-border">
+                                            <option value>Select Column</option>
+                                            <option value="project_name">
+                                                Project Name</option>
+                                            <option value="projectReason">
+                                                Reason</option>
+                                            <option value="projectType"> Type</option>
+                                            <option value="projectDivision">
+                                                Division</option>
+                                            <option value="projectCategory">
+                                                Category</option>
+                                            <option value="projectPriority">
+                                                Priority</option>
+                                            <option value="projectDept">
+                                                Department</option>
+                                            <option value="projectLocation">
+                                                Location</option>
+                                            <option value="projectStatus">
+                                                Status</option>
+                                            <option value="startDate"> Start
+                                                Date</option>
+                                            <option value="endDate"> End
+                                                Date</option>
+                                            <!-- Add more options for other columns -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr style="background-color: aqua">
+                                                <th>Project Name</th>
+                                                <th>Reason</th>
+                                                <th>Type</th>
+                                                <th>Division</th>
+                                                <th>Category</th>
+                                                <th>Priority</th>
+                                                <th>Department</th>
+                                                <th>Location</th>
+                                                <th>Status</th>
+                                                <th colspan="3"
+                                                    class="actions">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                                *ngFor="let project of projects">
+                                                <td>
+                                                    <div>{{ project.project_name
+                                                        }}</div>
+                                                    <div
+                                                        class="small text-muted">
+                                                        {{ project.startDate }}
+                                                        - {{ project.endDate }}
+                                                    </div>
+                                                </td>
+                                                <td>{{ project.reason?.reason_name }}</td>
+                        <td>{{ project.type?.type_name }}</td>
+                        <td>{{ project.division?.division_name }}</td>
+                        <td>{{ project.category?.category_name }}</td>
+                        <td>{{ project.priority?.priority_name }}</td>
+                        <td>{{ project.department?.dept_name }}</td>
+                        <td>{{ project.location?.location_name }}</td>
+                        <td>{{ project.status?.status_name }}</td>
+
+                        <td>
+
+                                                <!-- <td> {{
+                                                    project.reason_id
+                                                    }}</td>
+                                                <td>{{ project.type_id
+                                                    }}</td>
+                                                <td>{{
+                                                    project.division_id
+                                                    }}</td>
+                                                <td>{{
+                                                    project.category_id
+                                                    }}</td>
+                                                <td>{{
+                                                    project.priority_id
+                                                    }}</td>
+                                                <td>{{ project.dept_id
+                                                    }}</td>
+                                                <td>{{
+                                                    project.location_id
+                                                    }}</td>
+                                                <td>{{
+                                                    project.status_id
+                                                    }}</td>
+                                                <td> -->
+                                                    <div class="d-flex">
+                                                        <button
+                                                            class="btn btn-sm btn-primary rounded-pill mx-1 w-auto"
+                                                            (click)="startProject(project)">
+                                                            Start
+                                                        </button>
+                                                        <button
+                                                            class="btn btn-sm btn-outline-primary rounded-pill mx-1 w-auto"
+                                                            (click)="closeProject(project)">
+                                                            Close
+                                                        </button>
+                                                        <button
+                                                            class="btn btn-sm btn-outline-primary rounded-pill mx-1 w-auto"
+                                                            (click)="cancelProject(project)">
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div *ngFor="let project of projects">
+                                    <!-- Display project details here -->
+                                  </div>
+
+                                <!-- Pagination controls -->
+                                <div class="pagination">
+                                    <button [disabled]="currentPage === 1"
+                                        (click)="onPageChange(currentPage - 1)">Previous</button>
+                                    <span>{{ currentPage }}</span>
+                                    <button
+                                        [disabled]="currentPage === totalPages"
+                                        (click)="onPageChange(currentPage + 1)">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

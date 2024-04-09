@@ -1,0 +1,70 @@
+#button{
+    border-radius: 15px;
+}
+
+.search-container {
+    border-bottom: 1px solid #ced4da; /* Color of the bottom border */
+    padding-bottom: 5px; /* Optional: Adjust padding as needed */
+  }
+  
+  .search-input {
+    border: none; /* Remove default input border */
+    outline: none; /* Remove input focus outline */
+    width: 100%; /* Optional: Adjust width as needed */
+  }
+
+   
+.bg-image {
+    background-image: url('/../assets/Header-bg.svg');
+    color: white;
+    background-size: cover;
+    background-position: bottom;
+    height: 15vh; 
+}
+.faint-text {
+    color: #6c757d;
+    /* Faint color */
+}
+
+.small-text {
+    font-size: 0.8rem;
+    /* Small text size */
+}
+
+.custom-textarea,
+.custom-select {
+    height: 6rem;
+    /* Set the same height for both textarea and select */
+}
+
+/* bg img text and logo  */
+.header-text {
+    position: absolute;
+    top: 10%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    z-index: 1;
+}
+
+.logo {
+    
+    margin-top: 50px;
+ 
+}
+
+@media (max-width: 576px) {
+    #navbar {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        /* Ensure it stays above other content */
+    }
+}
+
+.actions{
+    text-align: center;
+}

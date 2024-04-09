@@ -1,0 +1,253 @@
+<div class="fluid">
+  <div class="container-fluid position-relative">
+    <!-- Row for the image -->
+    <div class="row">
+      <div class="col bg-image">
+        <div
+          class="header-text text-center position-absolute top-50 start-0 translate-middle-y ms-4 fs-4 fs-md-3 fs-lg-2"
+        >
+          &lt; Create Project
+        </div>
+        <div
+          class="logo text-center position-absolute top-0 start-50 translate-middle"
+        >
+          <img
+            src="/../assets/Logo.svg"
+            alt="Logo"
+            style="width: 50px; height: auto"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Row for the navigation bar -->
+  <div class="row">
+    <div class="col-sm-1 sticky-top">
+      <div
+        class="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top"
+      >
+        <ul
+          class="nav nav-pills navbar nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center"
+        >
+          <li>
+            <a
+               href="#" 
+             
+              class="nav-link py-3 px-2"
+              title=""
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              data-bs-original-title="Dashboard"
+              
+            >
+              <img
+                id="dashboardIcon"
+                src="/../assets/Dashboard.svg"
+                alt="Dashboard"
+                class="icon fs-1"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/project-listing"
+              class="nav-link py-3 px-2"
+              title=""
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              data-bs-original-title="Orders"
+             
+            >
+              <img
+                id="ordersIcon"
+                src="/../assets/Project-list.svg"
+                alt="Orders"
+                class="icon fs-1"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              href="/createproject"
+              class="nav-link py-3 px-2"
+              title=""
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              data-bs-original-title="Products"
+             
+            >
+              <img
+                id="productsIcon"
+                src="/../assets/create-project.svg"
+                alt="Products"
+                class="icon fs-1"
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm p-3 min-vh-100" style="background-color: #f3f5f7">
+      <!-- form content -->
+
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="projectForm">
+            <div class="row mb-3">
+              <div class="col">
+                <label
+                  class="custom-label faint-text small-text"
+                  for="reason"
+                ></label>
+                <textarea
+                  class="form-control custom-textarea"
+                  formControlName="project_name"
+                  placeholder="Project Name"
+                ></textarea>
+              </div>
+              <div class="col">
+                <select
+                  class="form-select custom-select"
+                  multiple
+                  formControlName="selectedUsers"
+                  (change)="SelectedUsersForm($event)"
+                >
+                  <option *ngFor="let user of userlist" [value]="user.userId">
+                    {{ user.username}} 
+                  </option>  
+                </select>
+              </div>
+              <div class="col-auto mt-4">
+                <button class="btn btn-primary" (click)="saveProject()">
+                  Save Project
+                </button>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label class="custom-label faint-text small-text" for="reason"
+                  >Reason</label
+                >
+                <select class="form-select" formControlName="reason">
+              
+                    <option *ngFor="let r of reasonList" [value]="r.reason_id">{{ r.reason_name }}</option>
+                  </select> 
+               
+              </div>
+              <div class="col">
+                <label class="custom-label faint-text small-text" for="type"
+                  >Type</label
+                >
+                <select class="form-select" formControlName="type">
+                  <option *ngFor="let type of typesList" [value]="type.type_id">
+                    {{ type.type_name }}
+                  </option>
+                </select>  
+              </div>
+              <div class="col">
+                <label class="custom-label faint-text small-text" for="status"
+                  >Division</label
+                >
+                <select class="form-select" formControlName="division">
+                  <option
+                    *ngFor="let division of divList"
+                    [value]="division.division_id"
+                  >
+                    {{ division.division_name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label class="custom-label faint-text small-text" for="status"
+                  >Category</label
+                >
+                <select class="form-select" formControlName="category">
+                  <option
+                    *ngFor="let category of categoryList"
+                    [value]="category.category_id"
+                  >
+                    {{ category.category_name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col">
+                <label class="custom-label faint-text small-text" for="status"
+                  >Priority</label
+                >
+                <select class="form-select" formControlName="priority">
+                  <option
+                    *ngFor="let priority of priorityList"
+                    [value]="priority.priority_id"
+                  >
+                    {{ priority.priority_name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col">
+                <label class="custom-label faint-text small-text" for="status"
+                  >Department</label
+                >
+                <select class="form-select" formControlName="department">
+                  <option
+                    *ngFor="let department of depList"
+                    [value]="department.dept_id"
+                  >
+                    {{ department.dept_name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label class="custom-label faint-text small-text" for="status"
+                  >Start Date as per Project Plan</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="startDate"
+                  placeholder="Start Date"
+                />
+              </div>
+              <div class="col">
+                <label class="custom-label faint-text small-text" for="status"
+                  >End Date as per Project Plan</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="endDate"
+                  placeholder="End Date"
+                />
+              </div>
+              <div class="col">
+                <label class="custom-label faint-text small-text" for="status"
+                  >Location</label
+                >
+                <select class="form-select" formControlName="location">
+                  <option
+                    *ngFor="let location of locationList"
+                    [value]="location.location_id"
+                  >
+                    {{ location.location_name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <div class="form-floating">
+                  <div class="form-control text-end" style="border: none">
+                    Status : {{ status }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
